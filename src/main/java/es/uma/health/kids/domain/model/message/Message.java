@@ -3,7 +3,7 @@ package es.uma.health.kids.domain.model.message;
 import java.time.LocalDateTime;
 
 import es.uma.health.kids.domain.model.patient.PatientId;
-import es.uma.health.kids.domain.model.user.DoctorId;
+import es.uma.health.kids.domain.model.user.UserId;
 
 
 public class Message {
@@ -12,10 +12,10 @@ public class Message {
     private MessageBody body;
     private LocalDateTime sendedAt;
     private boolean isDoctorTheSender;
-    private DoctorId doctorId;
+    private UserId doctorId;
     private PatientId patientId;
 
-	public Message(MessageId id, MessageBody body, LocalDateTime sendedAt, boolean isDoctorTheSender, DoctorId doctorId,
+	public Message(MessageId id, MessageBody body, LocalDateTime sendedAt, boolean isDoctorTheSender, UserId doctorId,
 			PatientId patientId) {
 		this.id = id;
 		this.body = body;
@@ -78,11 +78,11 @@ public class Message {
 		return true;
 	}
 
-	public DoctorId doctorId() {
+	public UserId doctorId() {
 		return doctorId;
 	}
 
-	public void doctorId(DoctorId doctorId) {
+	public void doctorId(UserId doctorId) {
 		this.doctorId = doctorId;
 	}
 

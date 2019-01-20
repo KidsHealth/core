@@ -7,7 +7,7 @@ public class PatientResponsible extends User {
     private Address address;
     private PhoneNumber phoneNumber;
 
-    public PatientResponsible(PatientResponsibleId id,
+    public PatientResponsible(UserId id,
             UserFullName fullName,
             Email email,
             Password password,
@@ -17,12 +17,8 @@ public class PatientResponsible extends User {
         this.address = address;
         this.phoneNumber = phoneNumber;
     }
-    
-    public PatientResponsibleId id() {
-    	return (PatientResponsibleId) id;
-    }
 
-    public PatientResponsible(PatientResponsibleId id,
+    public PatientResponsible(UserId id,
             UserFullName fullName, Email email,
             Password password) {
         super(id, fullName, email, password);

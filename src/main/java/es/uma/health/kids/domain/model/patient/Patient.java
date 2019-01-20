@@ -2,8 +2,7 @@ package es.uma.health.kids.domain.model.patient;
 
 import java.time.LocalDate;
 
-import es.uma.health.kids.domain.model.user.DoctorId;
-import es.uma.health.kids.domain.model.user.PatientResponsibleId;
+import es.uma.health.kids.domain.model.user.UserId;
 
 
 public class Patient {
@@ -13,11 +12,11 @@ public class Patient {
     private Height height;
     private Weight weight;
     private LocalDate birthdate;
-    private PatientResponsibleId patientResponsibleId;
-    private DoctorId doctorId;
+    private UserId patientResponsibleId;
+    private UserId doctorId;
 
-	public Patient(PatientId id, PatientFullName fullName, LocalDate birthdate, PatientResponsibleId patientResponsibleId,
-			DoctorId doctorId) {
+	public Patient(PatientId id, PatientFullName fullName, LocalDate birthdate, UserId patientResponsibleId,
+			UserId doctorId) {
 		this.id = id;
 		this.fullName = fullName;
 		this.birthdate = birthdate;
@@ -26,7 +25,7 @@ public class Patient {
 	}
 
 	public Patient(PatientId id, PatientFullName fullName, Height height, Weight weight, LocalDate birthdate,
-			PatientResponsibleId patientResponsibleId, DoctorId doctorId) {
+			UserId patientResponsibleId, UserId doctorId) {
 		this.id = id;
 		this.fullName = fullName;
 		this.height = height;
@@ -68,11 +67,11 @@ public class Patient {
 		this.birthdate = birthdate;
 	}
 
-	public PatientResponsibleId patientResponsibleId() {
+	public UserId patientResponsibleId() {
 		return patientResponsibleId;
 	}
 
-	public DoctorId doctorId() {
+	public UserId doctorId() {
 		return doctorId;
 	}
 

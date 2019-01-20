@@ -3,7 +3,7 @@ package es.uma.health.kids.domain.model.message;
 import java.time.LocalDateTime;
 
 import es.uma.health.kids.domain.model.patient.PatientId;
-import es.uma.health.kids.domain.model.user.DoctorId;
+import es.uma.health.kids.domain.model.user.UserId;
 
 
 public class AppointmentRequest extends Message {
@@ -19,7 +19,7 @@ public class AppointmentRequest extends Message {
 	private Status status;
 
 	public AppointmentRequest(MessageId id, MessageBody body, LocalDateTime sendedAt, boolean isDoctorTheSender,
-			DoctorId doctorId, PatientId patientId, LocalDateTime datetimeProposed, LocalDateTime updatedAt, Status status) {
+			UserId doctorId, PatientId patientId, LocalDateTime datetimeProposed, LocalDateTime updatedAt, Status status) {
 		super(id, body, sendedAt, isDoctorTheSender, doctorId, patientId);
 		this.datetimeProposed = datetimeProposed;
 		this.updatedAt = updatedAt;

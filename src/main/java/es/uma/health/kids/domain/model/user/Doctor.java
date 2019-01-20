@@ -4,15 +4,11 @@ import es.uma.health.kids.domain.model.patient.Patient;
 
 public class Doctor extends User {
 	
-    public Doctor(DoctorId id,
+    public Doctor(UserId id,
             UserFullName fullName,
             Email email,
             Password password) {
         super(id, fullName, email, password);
-    }
-    
-    public DoctorId id() {
-    	return (DoctorId) id;
     }
 
 	@Override
