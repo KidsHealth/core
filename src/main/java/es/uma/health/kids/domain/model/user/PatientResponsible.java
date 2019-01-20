@@ -33,7 +33,7 @@ public class PatientResponsible extends User {
     }
 
 	@Override
-	protected boolean isDoctor() {
+	public boolean isDoctor() {
 		return false;
 	}
 

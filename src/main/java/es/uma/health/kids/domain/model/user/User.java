@@ -77,7 +77,7 @@ public abstract class User {
 		return true;
 	}
     
-	protected abstract boolean isDoctor();
+	public abstract boolean isDoctor();
 	
 	protected abstract void checkMessageAuthorization(Patient patientAbout);
 	

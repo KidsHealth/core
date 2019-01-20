@@ -12,7 +12,7 @@ public class Doctor extends User {
     }
 
 	@Override
-	protected boolean isDoctor() {
+	public boolean isDoctor() {
 		return true;
 	}
 

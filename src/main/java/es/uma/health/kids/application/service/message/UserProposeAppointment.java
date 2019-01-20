@@ -13,7 +13,7 @@ import es.uma.health.kids.domain.model.user.User;
 import es.uma.health.kids.domain.model.user.UserId;
 import es.uma.health.kids.domain.model.user.UserRepository;
 
-public class UserProposeAppointment extends MessageService {
+public class UserProposeAppointment extends SendMessageService {
 
 	public UserProposeAppointment(UserRepository userRepo, PatientRepository patientRepo,
 			MessageRepository messageRepo) {

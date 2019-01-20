@@ -8,13 +8,13 @@ import es.uma.health.kids.domain.model.user.User;
 import es.uma.health.kids.domain.model.user.UserDoesNotExistException;
 import es.uma.health.kids.domain.model.user.UserRepository;
 
-public class MessageService {
+public class SendMessageService {
 	
 	protected UserRepository userRepo;
 	protected PatientRepository patientRepo;
 	protected MessageRepository messageRepo;
 
-	public MessageService(UserRepository userRepo, PatientRepository patientRepo,
+	public SendMessageService(UserRepository userRepo, PatientRepository patientRepo,
 			MessageRepository messageRepo) {
 		this.userRepo = userRepo;
 		this.patientRepo = patientRepo;

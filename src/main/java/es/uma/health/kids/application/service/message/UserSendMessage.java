@@ -10,7 +10,7 @@ import es.uma.health.kids.domain.model.user.User;
 import es.uma.health.kids.domain.model.user.UserId;
 import es.uma.health.kids.domain.model.user.UserRepository;
 
-public class UserSendMessage extends MessageService {
+public class UserSendMessage extends SendMessageService {
 
 	public UserSendMessage(UserRepository userRepo, PatientRepository patientRepo, MessageRepository messageRepo) {
 		super(userRepo, patientRepo, messageRepo);
