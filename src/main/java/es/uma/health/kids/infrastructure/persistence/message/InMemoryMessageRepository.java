@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import static java.util.stream.Collectors.toList;
 
 import es.uma.health.kids.domain.model.message.Message;
 import es.uma.health.kids.domain.model.message.MessageId;
 import es.uma.health.kids.domain.model.message.MessageRepository;
+import es.uma.health.kids.domain.model.patient.PatientId;
 
 public class InMemoryMessageRepository implements MessageRepository {
 
@@ -47,6 +49,11 @@ public class InMemoryMessageRepository implements MessageRepository {
 	@Override
 	public Message ofId(MessageId anId) {
 		return messages.get(anId);
+	}
+
+	@Override
+	public Collection<Message> ofPatient(PatientId patientId) {
+		return all().stream().filter(m -> m.patientId().equals(patientId)).collect(toList());
 	}
 
 }

@@ -1,6 +1,10 @@
 package es.uma.health.kids.domain.model.user;
 
+import java.time.LocalDate;
+
 import es.uma.health.kids.domain.model.patient.Patient;
+import es.uma.health.kids.domain.model.patient.PatientFullName;
+import es.uma.health.kids.domain.model.patient.PatientId;
 
 public class PatientResponsible extends User {
 
@@ -43,5 +47,9 @@ public class PatientResponsible extends User {
 			throw new NotAuthorizedException();
 		}
 	}
-    
+
+	public Patient newPatient(PatientId patientId, PatientFullName patientFullName, LocalDate birthdate) {
+		return new Patient(patientId, patientFullName, birthdate, this.id(), null);
+	}
+
 }

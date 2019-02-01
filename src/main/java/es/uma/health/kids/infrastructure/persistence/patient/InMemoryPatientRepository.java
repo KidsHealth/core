@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import es.uma.health.kids.domain.model.patient.Patient;
 import es.uma.health.kids.domain.model.patient.PatientId;
 import es.uma.health.kids.domain.model.patient.PatientRepository;
+import es.uma.health.kids.domain.model.user.UserId;
 
 public class InMemoryPatientRepository implements PatientRepository {
 
@@ -47,6 +49,22 @@ public class InMemoryPatientRepository implements PatientRepository {
 	@Override
 	public Patient ofId(PatientId anId) {
 		return patients.get(anId);
+	}
+
+	@Override
+	public Collection<Patient> ofResponsible(UserId responsibleId) {
+		return all().stream().filter(p -> p.patientResponsibleId().equals(responsibleId)).collect(Collectors.toList());
+	}
+
+	@Override
+	public Collection<Patient> ofDoctor(UserId doctorId) {
+		return all().stream().filter(p -> p.doctorId().equals(doctorId)).collect(Collectors.toList());
+	}
+	
+	public Collection<Patient> relatedWith(UserId userId) {
+		return all().stream().filter(p -> {
+			return p.patientResponsibleId().equals(userId) || p.doctorId().equals(userId);
+		}).collect(Collectors.toList());
 	}
 
 }

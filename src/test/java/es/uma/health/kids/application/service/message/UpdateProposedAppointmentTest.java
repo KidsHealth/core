@@ -75,5 +75,44 @@ public class UpdateProposedAppointmentTest {
 		assertTrue(actualApRequest.isAccepted());
 		
 	}
+	
+	@Test
+	public void shouldAProposedAppointmentByDoctorBeRejectedByResponsible() {
+		
+		new UpdateProposedAppointment(userRepo, messageRepo).execute(
+					new UpdateProposedAppointmentRequest(1,1,false)
+				);
+		
+		AppointmentRequest actualApRequest = (AppointmentRequest) messageRepo.ofId(new MessageId(1));
+		
+		assertTrue(actualApRequest.isRejected());
+		
+	}
+	
+	@Test
+	public void shouldAProposedAppointmentByResponsibleBeAcceptedByDoctor() {
+		
+		new UpdateProposedAppointment(userRepo, messageRepo).execute(
+					new UpdateProposedAppointmentRequest(2,2,true)
+				);
+		
+		AppointmentRequest actualApRequest = (AppointmentRequest) messageRepo.ofId(new MessageId(2));
+		
+		assertTrue(actualApRequest.isAccepted());
+		
+	}
+	
+	@Test
+	public void shouldAProposedAppointmentByResponsibleBeRejectedByDoctor() {
+		
+		new UpdateProposedAppointment(userRepo, messageRepo).execute(
+					new UpdateProposedAppointmentRequest(2,2,false)
+				);
+		
+		AppointmentRequest actualApRequest = (AppointmentRequest) messageRepo.ofId(new MessageId(2));
+		
+		assertTrue(actualApRequest.isRejected());
+		
+	}
 
 }

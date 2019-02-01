@@ -1,6 +1,7 @@
 package es.uma.health.kids.application.service.message;
 
 import es.uma.health.kids.domain.model.message.AppointmentRequest;
+import es.uma.health.kids.domain.model.message.MessageDoesNotExistException;
 import es.uma.health.kids.domain.model.message.MessageId;
 import es.uma.health.kids.domain.model.message.MessageRepository;
 import es.uma.health.kids.domain.model.user.NotAuthorizedException;
@@ -29,6 +30,10 @@ public class UpdateProposedAppointment {
 		}
 		
 		AppointmentRequest apRequest = (AppointmentRequest) messageRepo.ofId(new MessageId(request.messageId));
+		
+		if (null == apRequest) {
+			throw new MessageDoesNotExistException("Message does not exist.");
+		}
 		
 		if ((user.isDoctor() && apRequest.isDoctorTheSender()) || (!user.isDoctor() && !apRequest.isDoctorTheSender())) {
 			throw new NotAuthorizedException("The remitent cannot accept or reject the appointment.");

@@ -9,9 +9,13 @@ public class UserDoesNotExistException extends ResourceDoesNotExistException {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	public UserDoesNotExistException() {
+		super();
+	}
+	
 	public UserDoesNotExistException(String message) {
 		super(message);
-			}
+	}
 
 	public UserDoesNotExistException(Throwable cause) {
 		super(cause);

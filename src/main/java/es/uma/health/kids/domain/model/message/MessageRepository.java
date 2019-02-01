@@ -2,6 +2,8 @@ package es.uma.health.kids.domain.model.message;
 
 import java.util.Collection;
 
+import es.uma.health.kids.domain.model.patient.PatientId;
+
 public interface MessageRepository {
 
 	public MessageId nextIdentity();
@@ -16,4 +18,5 @@ public interface MessageRepository {
 	
 	public Message ofId(MessageId anId);
 	
+	public Collection<Message> ofPatient(PatientId patientId);
 }

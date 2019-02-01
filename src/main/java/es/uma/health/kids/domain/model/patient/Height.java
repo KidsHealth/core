@@ -5,13 +5,13 @@ import java.util.Objects;
 
 public class Height {
 
-    private int heightValue;
+    private float heightValue;
 
-    public Height(int heightValue) {
+    public Height(float heightValue) {
         this.heightValue = heightValue;
     }
     
-    public int value() {
+    public float value() {
     	return heightValue;
     }
 

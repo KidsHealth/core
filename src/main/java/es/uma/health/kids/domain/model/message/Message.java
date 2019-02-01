@@ -15,7 +15,12 @@ public class Message {
     private UserId doctorId;
     private PatientId patientId;
 
-	public Message(MessageId id, MessageBody body, LocalDateTime sendedAt, boolean isDoctorTheSender, UserId doctorId,
+	public Message(
+			MessageId id, 
+			MessageBody body, 
+			LocalDateTime sendedAt, 
+			boolean isDoctorTheSender, 
+			UserId doctorId,
 			PatientId patientId) {
 		this.id = id;
 		this.body = body;

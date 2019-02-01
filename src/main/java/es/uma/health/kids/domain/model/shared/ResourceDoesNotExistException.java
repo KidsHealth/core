@@ -7,6 +7,10 @@ public class ResourceDoesNotExistException extends RuntimeException {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	public ResourceDoesNotExistException() {
+		super();
+	}
+	
 	public ResourceDoesNotExistException(String message) {
 		super(message);
 	}

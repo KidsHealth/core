@@ -59,7 +59,7 @@ public class AppointmentRequest extends Message {
     }
 
     public boolean isRejected() {
-        return status.equals(Status.ACCEPTED);
+        return status.equals(Status.REJECTED);
     }
 
     public boolean isPending() {

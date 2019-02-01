@@ -8,7 +8,7 @@ import es.uma.health.kids.domain.model.user.User;
 import es.uma.health.kids.domain.model.user.UserDoesNotExistException;
 import es.uma.health.kids.domain.model.user.UserRepository;
 
-public class SendMessageService {
+public abstract class SendMessageService {
 	
 	protected UserRepository userRepo;
 	protected PatientRepository patientRepo;
