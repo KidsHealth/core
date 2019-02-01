@@ -5,13 +5,13 @@ import java.util.Objects;
 
 public class Weight {
 
-    private float weightValue;
+    private int weightValue;
 
-    public Weight(float weightValue) {
+    public Weight(int weightValue) {
         this.weightValue = weightValue;
     }
     
-    public float value() {
+    public int value() {
     	return weightValue;
     }
 

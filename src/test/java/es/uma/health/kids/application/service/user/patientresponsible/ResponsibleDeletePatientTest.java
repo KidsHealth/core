@@ -1,18 +1,16 @@
 package es.uma.health.kids.application.service.user.patientresponsible;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import es.uma.health.kids.domain.model.patient.Height;
 import es.uma.health.kids.domain.model.patient.Patient;
 import es.uma.health.kids.domain.model.patient.PatientFullName;
 import es.uma.health.kids.domain.model.patient.PatientId;
 import es.uma.health.kids.domain.model.patient.PatientRepository;
-import es.uma.health.kids.domain.model.patient.Weight;
 import es.uma.health.kids.domain.model.user.Doctor;
 import es.uma.health.kids.domain.model.user.NotAuthorizedException;
 import es.uma.health.kids.domain.model.user.PatientResponsible;
@@ -22,13 +20,14 @@ import es.uma.health.kids.domain.model.user.UserRepository;
 import es.uma.health.kids.infrastructure.persistence.patient.PatientRepositoryStub;
 import es.uma.health.kids.infrastructure.persistence.user.UserRepositoryStub;
 
-public class ResponsibleUpdatePatientTest {
-	
+public class ResponsibleDeletePatientTest {
+
 	private UserRepository userRepo;
 	private PatientRepository patientRepo;
 	private PatientResponsible pResp;
 	private Doctor aDoctor;
 	private PatientResponsible randomUser;
+	private Patient expectedPatient;
 	
 	@Before
 	public void setUp() {
@@ -36,47 +35,37 @@ public class ResponsibleUpdatePatientTest {
 		randomUser = new PatientResponsible(new UserId(50), null, null, null);
 		aDoctor = new Doctor(new UserId(30), null, null, null);
 		userRepo = UserRepositoryStub.with(pResp, aDoctor, randomUser);
-		patientRepo = PatientRepositoryStub.with(new Patient(
+		expectedPatient = new Patient(
 				new PatientId(2), 
 				new PatientFullName("BeforeName", "BeforeSurname"),
 				LocalDate.of(2012, 05, 01),
 				new UserId(1),
-				null));
+				null);
+		patientRepo = PatientRepositoryStub.with(expectedPatient);
 	}
 	
 	@Test
-	public void shouldAResponsibleUpdateAPatient() {
+	public void shouldAResponsibleDeleteAPatient() {
 		parametrizedUserTest(pResp);
 	}
 	
 	@Test(expected = NotAuthorizedException.class)
-	public void shouldADoctorNotUpdateAPatient() {
+	public void shouldADoctorNotDeleteAPatient() {
 		parametrizedUserTest(aDoctor);
 	}
 	
 	@Test(expected = NotAuthorizedException.class)
-	public void shouldARandomUserNotUpdateAPatient() {
+	public void shouldARandomUserNotDeleteAPatient() {
 		parametrizedUserTest(randomUser);
 	}
 	
 	public void parametrizedUserTest(User user) {
 		
-		new ResponsibleUpdatePatient(userRepo, patientRepo).execute(new ResponsibleUpdatePatientRequest(
+		new ResponsibleDeletePatient(userRepo, patientRepo).execute(new ResponsibleDeletePatientRequest(
 					user.id().value(),
-					2,
-					"Name",
-					"Surname",
-					"2012-05-01",
-					22000,
-					120
+					2
 				));
 		
-		Patient actualPatient = patientRepo.ofId(new PatientId(2));
-		
-		assertEquals(new PatientFullName("Name", "Surname"), actualPatient.fullName());
-		assertEquals(LocalDate.of(2012, 5, 1), actualPatient.birthdate());
-		assertEquals(new Weight(22000), actualPatient.weight());
-		assertEquals(new Height(120), actualPatient.height());
+		assertTrue(patientRepo.all().isEmpty());
 	}
-
 }

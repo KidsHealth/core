@@ -8,6 +8,10 @@ public class PatientDoesNotExistException extends ResourceDoesNotExistException 
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	public PatientDoesNotExistException() {
+		super();
+	}
 
 	public PatientDoesNotExistException(String message) {
 		super(message);

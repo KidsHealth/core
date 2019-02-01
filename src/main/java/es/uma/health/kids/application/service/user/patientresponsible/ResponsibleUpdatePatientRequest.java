@@ -7,11 +7,11 @@ public class ResponsibleUpdatePatientRequest {
 	public String name;
 	public String surname;
 	public String birthdate;
-	public float weight;
-	public float height;
+	public int weight;
+	public int height;
 	
 	public ResponsibleUpdatePatientRequest(int userId, int patientId, String name, String surname, String birthdate,
-			float weight, float height) {
+			int weight, int height) {
 		this.userId = userId;
 		this.patientId = patientId;
 		this.name = name;

@@ -8,12 +8,20 @@ import es.uma.health.kids.application.service.message.UpdateProposedAppointmentT
 import es.uma.health.kids.application.service.message.UserProposeAppointmentTest;
 import es.uma.health.kids.application.service.message.UserSendMessageTest;
 import es.uma.health.kids.application.service.message.UserViewMessagesTest;
+import es.uma.health.kids.application.service.user.UserViewTheirPatientsTest;
+import es.uma.health.kids.application.service.user.patientresponsible.ResponsibleAddPatientTest;
+import es.uma.health.kids.application.service.user.patientresponsible.ResponsibleDeletePatientTest;
+import es.uma.health.kids.application.service.user.patientresponsible.ResponsibleUpdatePatientTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({
 	UserSendMessageTest.class,
 	UserProposeAppointmentTest.class,
 	UpdateProposedAppointmentTest.class,
-	UserViewMessagesTest.class
+	UserViewMessagesTest.class,
+	ResponsibleAddPatientTest.class,
+	ResponsibleUpdatePatientTest.class,
+	ResponsibleDeletePatientTest.class,
+	UserViewTheirPatientsTest.class
 })
 public class AllTests {}

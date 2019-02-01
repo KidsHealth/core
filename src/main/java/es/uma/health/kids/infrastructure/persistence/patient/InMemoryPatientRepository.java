@@ -1,10 +1,10 @@
 package es.uma.health.kids.infrastructure.persistence.patient;
 
-import java.util.ArrayList;
+import static java.util.stream.Collectors.toList;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 import es.uma.health.kids.domain.model.patient.Patient;
 import es.uma.health.kids.domain.model.patient.PatientId;
@@ -31,40 +31,41 @@ public class InMemoryPatientRepository implements PatientRepository {
 
 	@Override
 	public void update(Patient aPatient) {
-		// TODO Auto-generated method stub
-
+		add(aPatient);
 	}
 
 	@Override
 	public void delete(Patient aPatient) {
-		// TODO Auto-generated method stub
-
+		patients.remove(aPatient.id());
 	}
 
 	@Override
 	public Collection<Patient> all() {
-		return new ArrayList<>(patients.values());
+		return patients.values().stream().map(patient -> new Patient(patient.id(), patient.fullName(), patient.height(), patient.weight(), patient.birthdate(),
+			patient.patientResponsibleId(), patient.doctorId())).collect(toList());
 	}
 
 	@Override
 	public Patient ofId(PatientId anId) {
-		return patients.get(anId);
+		Patient patient = patients.get(anId);
+		return new Patient(patient.id(), patient.fullName(), patient.height(), patient.weight(), patient.birthdate(),
+			patient.patientResponsibleId(), patient.doctorId());
 	}
 
 	@Override
 	public Collection<Patient> ofResponsible(UserId responsibleId) {
-		return all().stream().filter(p -> p.patientResponsibleId().equals(responsibleId)).collect(Collectors.toList());
+		return all().stream().filter(p -> p.patientResponsibleId().equals(responsibleId)).collect(toList());
 	}
 
 	@Override
 	public Collection<Patient> ofDoctor(UserId doctorId) {
-		return all().stream().filter(p -> p.doctorId().equals(doctorId)).collect(Collectors.toList());
+		return all().stream().filter(p -> (null != p.doctorId() && p.doctorId().equals(doctorId))).collect(toList());
 	}
 	
 	public Collection<Patient> relatedWith(UserId userId) {
 		return all().stream().filter(p -> {
 			return p.patientResponsibleId().equals(userId) || p.doctorId().equals(userId);
-		}).collect(Collectors.toList());
+		}).collect(toList());
 	}
 
 }
