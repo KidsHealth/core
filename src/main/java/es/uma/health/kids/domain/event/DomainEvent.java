@@ -1,9 +1,17 @@
 package es.uma.health.kids.domain.event;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
-public interface DomainEvent {
+public abstract class DomainEvent {
 
-    public Date occurredOn();
+	protected LocalDateTime occurredOn;
+	
+	public DomainEvent() {
+		this.occurredOn = LocalDateTime.now();
+	}
+	
+    public LocalDateTime occurredOn() {
+    	return occurredOn;
+    }
     
 }

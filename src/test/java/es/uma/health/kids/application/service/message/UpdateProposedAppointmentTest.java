@@ -1,5 +1,6 @@
 package es.uma.health.kids.application.service.message;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDateTime;
@@ -7,6 +8,10 @@ import java.time.LocalDateTime;
 import org.junit.Before;
 import org.junit.Test;
 
+import es.uma.health.kids.domain.event.DomainEventPublisher;
+import es.uma.health.kids.domain.event.DomainEventSubscriber;
+import es.uma.health.kids.domain.model.message.AppointmentAccepted;
+import es.uma.health.kids.domain.model.message.AppointmentRejected;
 import es.uma.health.kids.domain.model.message.AppointmentRequest;
 import es.uma.health.kids.domain.model.message.AppointmentRequest.Status;
 import es.uma.health.kids.domain.model.message.MessageId;
@@ -28,6 +33,8 @@ public class UpdateProposedAppointmentTest {
 	private AppointmentRequest anAppointmentRequestProposedByResponsible;
 	private PatientResponsible aResponsible;
 	private Doctor aDoctor;
+	private boolean accepted;
+	private boolean rejected;
 	
 	@Before
 	public void setUp() {
@@ -61,6 +68,36 @@ public class UpdateProposedAppointmentTest {
 		
 		userRepo = UserRepositoryStub.with(aResponsible, aDoctor);
 		messageRepo = MessageRepositoryStub.with(anAppointmentRequestProposedByDoctor, anAppointmentRequestProposedByResponsible);
+		
+		DomainEventPublisher.instance().subscribe(new DomainEventSubscriber<AppointmentAccepted>() {
+
+			@Override
+			public void handleEvent(AppointmentAccepted aDomainEvent) {
+				accepted = true;
+				rejected = false;
+			}
+
+			@Override
+			public Class<AppointmentAccepted> subscribedToEventType() {
+				return AppointmentAccepted.class;
+			}
+			
+		});
+		
+		DomainEventPublisher.instance().subscribe(new DomainEventSubscriber<AppointmentRejected>() {
+
+			@Override
+			public void handleEvent(AppointmentRejected aDomainEvent) {
+				accepted = false;
+				rejected = true;
+			}
+
+			@Override
+			public Class<AppointmentRejected> subscribedToEventType() {
+				return AppointmentRejected.class;
+			}
+			
+		});
 	}
 
 	@Test
@@ -73,7 +110,8 @@ public class UpdateProposedAppointmentTest {
 		AppointmentRequest actualApRequest = (AppointmentRequest) messageRepo.ofId(new MessageId(1));
 		
 		assertTrue(actualApRequest.isAccepted());
-		
+		assertTrue(accepted);
+		assertFalse(rejected);
 	}
 	
 	@Test
@@ -86,7 +124,8 @@ public class UpdateProposedAppointmentTest {
 		AppointmentRequest actualApRequest = (AppointmentRequest) messageRepo.ofId(new MessageId(1));
 		
 		assertTrue(actualApRequest.isRejected());
-		
+		assertTrue(rejected);
+		assertFalse(accepted);
 	}
 	
 	@Test
@@ -99,7 +138,8 @@ public class UpdateProposedAppointmentTest {
 		AppointmentRequest actualApRequest = (AppointmentRequest) messageRepo.ofId(new MessageId(2));
 		
 		assertTrue(actualApRequest.isAccepted());
-		
+		assertTrue(accepted);
+		assertFalse(rejected);
 	}
 	
 	@Test
@@ -112,7 +152,8 @@ public class UpdateProposedAppointmentTest {
 		AppointmentRequest actualApRequest = (AppointmentRequest) messageRepo.ofId(new MessageId(2));
 		
 		assertTrue(actualApRequest.isRejected());
-		
+		assertTrue(rejected);
+		assertFalse(accepted);
 	}
 
 }

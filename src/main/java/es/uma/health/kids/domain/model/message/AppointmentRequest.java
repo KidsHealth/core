@@ -2,6 +2,7 @@ package es.uma.health.kids.domain.model.message;
 
 import java.time.LocalDateTime;
 
+import es.uma.health.kids.domain.event.DomainEventPublisher;
 import es.uma.health.kids.domain.model.patient.PatientId;
 import es.uma.health.kids.domain.model.user.UserId;
 
@@ -29,10 +30,6 @@ public class AppointmentRequest extends Message {
     public LocalDateTime updatedAt() {
         return updatedAt;
     }
-
-    public void updatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
     
     public LocalDateTime datetimeProposed() {
     	return datetimeProposed;
@@ -52,10 +49,14 @@ public class AppointmentRequest extends Message {
 
     public void reject() {
         this.status = Status.REJECTED;
+        this.updatedAt = LocalDateTime.now();
+        DomainEventPublisher.instance().publish(new AppointmentRejected(this.id()));
     }
 
     public void accept() {
         this.status = Status.ACCEPTED;
+        this.updatedAt = LocalDateTime.now();
+        DomainEventPublisher.instance().publish(new AppointmentAccepted(this.id(), this.datetimeProposed));
     }
 
     public boolean isRejected() {

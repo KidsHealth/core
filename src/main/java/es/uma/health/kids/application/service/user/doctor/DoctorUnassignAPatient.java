@@ -11,17 +11,17 @@ import es.uma.health.kids.domain.model.user.UserDoesNotExistException;
 import es.uma.health.kids.domain.model.user.UserId;
 import es.uma.health.kids.domain.model.user.UserRepository;
 
-public class DoctorUnssignAPatient {
+public class DoctorUnassignAPatient {
 
 	private UserRepository userRepo;
 	private PatientRepository patientRepo;
 	
-	public DoctorUnssignAPatient(UserRepository userRepo, PatientRepository patientRepo) {
+	public DoctorUnassignAPatient(UserRepository userRepo, PatientRepository patientRepo) {
 		this.userRepo = userRepo;
 		this.patientRepo = patientRepo;
 	}
 
-	public void execute(DoctorUnssignAPatientRequest request) {
+	public void execute(DoctorUnassignAPatientRequest request) {
 		
 		User user = userRepo.ofId(new UserId(request.doctorId));
 		Patient patient = patientRepo.ofId(new PatientId(request.patientId));

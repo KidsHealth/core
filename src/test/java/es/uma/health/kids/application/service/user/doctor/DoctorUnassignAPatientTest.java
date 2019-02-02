@@ -19,7 +19,7 @@ import es.uma.health.kids.domain.model.user.UserRepository;
 import es.uma.health.kids.infrastructure.persistence.patient.PatientRepositoryStub;
 import es.uma.health.kids.infrastructure.persistence.user.UserRepositoryStub;
 
-public class DoctorUnssignAPatientTest {
+public class DoctorUnassignAPatientTest {
 
 	private UserRepository userRepo;
 	private PatientRepository patientRepo;
@@ -46,7 +46,7 @@ public class DoctorUnssignAPatientTest {
 		
 		assertEquals(Arrays.asList(aPatient), patientRepo.ofDoctor(aDoctor.id()));
 		
-		new DoctorUnssignAPatient(userRepo, patientRepo).execute(new DoctorUnssignAPatientRequest(
+		new DoctorUnassignAPatient(userRepo, patientRepo).execute(new DoctorUnassignAPatientRequest(
 				aDoctor.id().value(),
 				2
 			));

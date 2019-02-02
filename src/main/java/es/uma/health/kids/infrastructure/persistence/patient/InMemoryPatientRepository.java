@@ -41,8 +41,7 @@ public class InMemoryPatientRepository implements PatientRepository {
 
 	@Override
 	public Collection<Patient> all() {
-		return patients.values().stream().map(patient -> new Patient(patient.id(), patient.fullName(), patient.height(), patient.weight(), patient.birthdate(),
-			patient.patientResponsibleId(), patient.doctorId())).collect(toList());
+		return patients.values().stream().map(patient -> ofId(patient.id())).collect(toList());
 	}
 
 	@Override

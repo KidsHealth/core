@@ -2,6 +2,8 @@ package es.uma.health.kids.domain.model.event;
 
 import java.util.Collection;
 
+import es.uma.health.kids.domain.model.message.MessageId;
+
 public interface EventRepository {
 
 	public EventId nextIdentity();
@@ -16,4 +18,5 @@ public interface EventRepository {
 	
 	public Event ofId(EventId anId);
 	
+	public Event ofAppointment(MessageId appointmentId);
 }
