@@ -1,18 +1,18 @@
 package es.uma.health.kids.domain.model.diseasecontraction;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import es.uma.health.kids.domain.model.patient.PatientId;
 
 public class DiseaseContraction {
 
     private DiseaseContractionId id;
-    private Date diagnosedAt;
+    private LocalDateTime diagnosedAt;
     private DiseaseName diseaseName;
     private DiseaseShortName diseaseShortName; 
     private PatientId patientId;
 	
-    public DiseaseContraction(DiseaseContractionId id, Date diagnosedAt, DiseaseName diseaseName,
+    public DiseaseContraction(DiseaseContractionId id, LocalDateTime diagnosedAt, DiseaseName diseaseName,
 			DiseaseShortName diseaseShortName, PatientId patientId) {
 		this.id = id;
 		this.diagnosedAt = diagnosedAt;
@@ -21,11 +21,11 @@ public class DiseaseContraction {
 		this.patientId = patientId;
 	}
 
-	public Date diagnosedAt() {
+	public LocalDateTime diagnosedAt() {
 		return diagnosedAt;
 	}
 
-	public void diagnosedAt(Date diagnosedAt) {
+	public void diagnosedAt(LocalDateTime diagnosedAt) {
 		this.diagnosedAt = diagnosedAt;
 	}
 

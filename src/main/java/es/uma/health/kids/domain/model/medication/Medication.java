@@ -1,6 +1,6 @@
 package es.uma.health.kids.domain.model.medication;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import es.uma.health.kids.domain.model.diseasecontraction.DiseaseContractionId;
 
@@ -12,12 +12,12 @@ public class Medication {
 	private MedicineCommercialName medicineCommercialName;
 	private Timing timing;
 	private Posology posology;
-	private Date startedAt;
-	private Date endedAt;
+	private LocalDate startedAt;
+	private LocalDate endedAt;
 	
 	public Medication(MedicationId id, DiseaseContractionId diseaseContractionId, MedicineName medicineName,
-			MedicineCommercialName medicineCommercialName, Timing timing, Posology posology, Date startedAt,
-			Date endedAt) {
+			MedicineCommercialName medicineCommercialName, Timing timing, Posology posology, LocalDate startedAt,
+			LocalDate endedAt) {
 		this.id = id;
 		this.diseaseContractionId = diseaseContractionId;
 		this.medicineName = medicineName;
@@ -29,7 +29,7 @@ public class Medication {
 	}
 
 	public Medication(MedicationId id, DiseaseContractionId diseaseContractionId, MedicineName medicineName,
-			MedicineCommercialName medicineCommercialName, Timing timing, Posology posology, Date startedAt) {
+			MedicineCommercialName medicineCommercialName, Timing timing, Posology posology, LocalDate startedAt) {
 		this.id = id;
 		this.diseaseContractionId = diseaseContractionId;
 		this.medicineName = medicineName;
@@ -79,11 +79,11 @@ public class Medication {
 		this.posology = posology;
 	}
 
-	public Date endedAt() {
+	public LocalDate endedAt() {
 		return endedAt;
 	}
 
-	public void endedAt(Date endedAt) {
+	public void endedAt(LocalDate endedAt) {
 		this.endedAt = endedAt;
 	}
 
@@ -91,11 +91,11 @@ public class Medication {
 		return id;
 	}
 
-	public Date startedAt() {
+	public LocalDate startedAt() {
 		return startedAt;
 	}
 
-	public void startedAt(Date startedAt) {
+	public void startedAt(LocalDate startedAt) {
 		this.startedAt = startedAt;
 	}
 

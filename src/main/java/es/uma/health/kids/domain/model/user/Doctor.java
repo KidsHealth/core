@@ -22,4 +22,18 @@ public class Doctor extends User {
 			throw new NotAuthorizedException();
 		}
 	}
+	
+	public void assignPatient(Patient aPatient) {
+		if (null != aPatient.doctorId()) {
+			throw new IllegalArgumentException("The patient must not have a doctor assigned yet.");
+		}
+		aPatient.setDoctorId(this.id());
+	}
+	
+	public void unassignPatient(Patient aPatient) {
+		if (!aPatient.doctorId().equals(this.id())) {
+			throw new NotAuthorizedException("The doctor does not have authorization to perform this action.");
+		}
+		aPatient.setDoctorId(null);
+	}
 }

@@ -9,6 +9,7 @@ import es.uma.health.kids.application.service.message.UserProposeAppointmentTest
 import es.uma.health.kids.application.service.message.UserSendMessageTest;
 import es.uma.health.kids.application.service.message.UserViewMessagesTest;
 import es.uma.health.kids.application.service.user.UserViewTheirPatientsTest;
+import es.uma.health.kids.application.service.user.doctor.DoctorAssignNewPatientTest;
 import es.uma.health.kids.application.service.user.patientresponsible.ResponsibleAddPatientTest;
 import es.uma.health.kids.application.service.user.patientresponsible.ResponsibleDeletePatientTest;
 import es.uma.health.kids.application.service.user.patientresponsible.ResponsibleUpdatePatientTest;
@@ -22,6 +23,7 @@ import es.uma.health.kids.application.service.user.patientresponsible.Responsibl
 	ResponsibleAddPatientTest.class,
 	ResponsibleUpdatePatientTest.class,
 	ResponsibleDeletePatientTest.class,
-	UserViewTheirPatientsTest.class
+	UserViewTheirPatientsTest.class,
+	DoctorAssignNewPatientTest.class
 })
 public class AllTests {}

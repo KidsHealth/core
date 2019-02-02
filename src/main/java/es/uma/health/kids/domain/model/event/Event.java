@@ -1,6 +1,6 @@
 package es.uma.health.kids.domain.model.event;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import es.uma.health.kids.domain.model.patient.PatientId;
 
@@ -12,13 +12,13 @@ public class Event {
     private EventDescription description;
     private EventVenue venue;
     private EventTopic topic;
-    private Date startDatetime;
-    private Date endDatetime;
+    private LocalDateTime startDatetime;
+    private LocalDateTime endDatetime;
     private PatientId patientId;
 
     public Event(EventId id, EventTitle title,
-            EventDescription description, EventTopic topic, EventVenue venue, Date startDatetime,
-            Date endDatetime) {
+            EventDescription description, EventTopic topic, EventVenue venue, LocalDateTime startDatetime,
+            LocalDateTime endDatetime) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -28,7 +28,7 @@ public class Event {
         this.endDatetime = endDatetime;
     }
 
-    public Event(EventId id, EventTitle title, Date startDatetime, Date endDatetime) {
+    public Event(EventId id, EventTitle title, LocalDateTime startDatetime, LocalDateTime endDatetime) {
         this.id = id;
         this.title = title;
         this.startDatetime = startDatetime;
@@ -63,19 +63,19 @@ public class Event {
     	this.venue = venue;
     }
 
-    public Date startDatetime() {
+    public LocalDateTime startDatetime() {
         return startDatetime;
     }
 
-    public void startDatetime(Date startDatetime) {
+    public void startDatetime(LocalDateTime startDatetime) {
     	this.startDatetime = startDatetime;
     }
 
-    public Date endDatetime() {
+    public LocalDateTime endDatetime() {
         return endDatetime;
     }
 
-    public void endDatetime(Date endDatetime) {
+    public void endDatetime(LocalDateTime endDatetime) {
     	this.endDatetime = endDatetime;
     }
 

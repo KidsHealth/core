@@ -74,6 +74,10 @@ public class Patient {
 	public UserId doctorId() {
 		return doctorId;
 	}
+	
+	public void setDoctorId(UserId doctorId) {
+		this.doctorId = doctorId;
+	}
 
 	public PatientId id() {
 		return id;
