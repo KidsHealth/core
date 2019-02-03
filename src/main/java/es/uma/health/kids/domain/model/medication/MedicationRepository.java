@@ -2,6 +2,8 @@ package es.uma.health.kids.domain.model.medication;
 
 import java.util.Collection;
 
+import es.uma.health.kids.domain.model.diseasecontraction.DiseaseContractionId;
+
 public interface MedicationRepository {
 
 	public MedicationId nextIdentity();
@@ -15,5 +17,7 @@ public interface MedicationRepository {
 	public Collection<Medication> all();
 	
 	public Medication ofId(MedicationId anId);
+
+	public Collection<Medication> ofDiagnosis(DiseaseContractionId id);
 	
 }

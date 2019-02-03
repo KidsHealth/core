@@ -2,9 +2,6 @@ package es.uma.health.kids.domain.model.medication;
 
 import java.util.Objects;
 
-/**
- * @author Miguel González <sosa@uma.es>
- **/
 public class Timing {
 
     private int eachHours;

@@ -2,6 +2,8 @@ package es.uma.health.kids.domain.model.diseasecontraction;
 
 import java.util.Collection;
 
+import es.uma.health.kids.domain.model.patient.PatientId;
+
 public interface DiseaseContractionRepository {
 
 	public DiseaseContractionId nextIdentity();
@@ -16,4 +18,5 @@ public interface DiseaseContractionRepository {
 	
 	public DiseaseContraction ofId(DiseaseContractionId anId);
 	
+	public Collection<DiseaseContraction> ofPatient(PatientId patientId);
 }
