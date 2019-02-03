@@ -8,8 +8,11 @@ import es.uma.health.kids.application.service.message.UpdateProposedAppointmentT
 import es.uma.health.kids.application.service.message.UserProposeAppointmentTest;
 import es.uma.health.kids.application.service.message.UserSendMessageTest;
 import es.uma.health.kids.application.service.message.UserViewMessagesTest;
+import es.uma.health.kids.application.service.patient.ViewDetailedPatientTest;
 import es.uma.health.kids.application.service.user.UserViewTheirPatientsTest;
+import es.uma.health.kids.application.service.user.doctor.DoctorAddTreatmentTest;
 import es.uma.health.kids.application.service.user.doctor.DoctorAssignNewPatientTest;
+import es.uma.health.kids.application.service.user.doctor.DoctorDiagnosesAPatientTest;
 import es.uma.health.kids.application.service.user.doctor.DoctorUnassignAPatientTest;
 import es.uma.health.kids.application.service.user.patientresponsible.ResponsibleAddPatientTest;
 import es.uma.health.kids.application.service.user.patientresponsible.ResponsibleDeletePatientTest;
@@ -17,15 +20,18 @@ import es.uma.health.kids.application.service.user.patientresponsible.Responsibl
 
 @RunWith(Suite.class)
 @SuiteClasses({
-	UserSendMessageTest.class,
-	UserProposeAppointmentTest.class,
 	UpdateProposedAppointmentTest.class,
+	UserProposeAppointmentTest.class,
+	UserSendMessageTest.class,
 	UserViewMessagesTest.class,
-	ResponsibleAddPatientTest.class,
-	ResponsibleUpdatePatientTest.class,
-	ResponsibleDeletePatientTest.class,
-	UserViewTheirPatientsTest.class,
+	ViewDetailedPatientTest.class,
+	DoctorAddTreatmentTest.class,
 	DoctorAssignNewPatientTest.class,
-	DoctorUnassignAPatientTest.class
+	DoctorDiagnosesAPatientTest.class,
+	DoctorUnassignAPatientTest.class,
+	ResponsibleAddPatientTest.class,
+	ResponsibleDeletePatientTest.class,
+	ResponsibleUpdatePatientTest.class,
+	UserViewTheirPatientsTest.class,
 })
 public class AllTests {}
