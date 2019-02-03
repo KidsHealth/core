@@ -7,6 +7,7 @@ import java.util.Collection;
 import es.uma.health.kids.application.dto.message.ConversationDTO;
 import es.uma.health.kids.application.dto.message.MessageDTO;
 import es.uma.health.kids.application.dto.message.MessageMapper;
+import es.uma.health.kids.application.dto.patient.PatientMapper;
 import es.uma.health.kids.domain.model.message.MessageRepository;
 import es.uma.health.kids.domain.model.patient.Patient;
 import es.uma.health.kids.domain.model.patient.PatientRepository;
@@ -20,14 +21,16 @@ public class UserViewMessages {
 	private UserRepository userRepo;
 	private PatientRepository patientRepo;
 	private MessageRepository messageRepo;
-	private MessageMapper mapper;
+	private MessageMapper messageMapper;
+	private PatientMapper patientMapper;
 
 	public UserViewMessages(UserRepository userRepo, PatientRepository patientRepo,
-			MessageRepository messageRepo, MessageMapper mapper) {
+			MessageRepository messageRepo, MessageMapper messageMapper, PatientMapper patientMapper) {
 		this.userRepo = userRepo;
 		this.patientRepo = patientRepo;
 		this.messageRepo = messageRepo;
-		this.mapper = mapper;
+		this.messageMapper = messageMapper;
+		this.patientMapper = patientMapper;
 	}
 
 	public Collection<ConversationDTO> execute(UserViewMessagesRequest request) {
@@ -43,8 +46,8 @@ public class UserViewMessages {
 				
 		Collection<ConversationDTO> conversations = patients.stream().map(patient -> {
 			Collection<MessageDTO> patientMessages = messageRepo.ofPatient(patient.id())
-					.stream().map(mapper::toDTO).collect(toList());
-			return new ConversationDTO(patient, patientMessages);
+					.stream().map(messageMapper::toDTO).collect(toList());
+			return new ConversationDTO(patientMapper.toDTO(patient), patientMessages);
 		}).collect(toList());
 		
 		return conversations;

@@ -2,14 +2,14 @@ package es.uma.health.kids.application.dto.message;
 
 import java.util.Collection;
 
-import es.uma.health.kids.domain.model.patient.Patient;
+import es.uma.health.kids.application.dto.patient.PatientDTO;
 
 public class ConversationDTO {
 
-	public Patient patient;
+	public PatientDTO patient;
 	public Collection<MessageDTO> messages;
 
-	public ConversationDTO(Patient patient, Collection<MessageDTO> messages) {
+	public ConversationDTO(PatientDTO patient, Collection<MessageDTO> messages) {
 		this.patient = patient;
 		this.messages = messages;
 	}

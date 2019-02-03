@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import es.uma.health.kids.application.dto.message.ConversationDTO;
 import es.uma.health.kids.application.dto.message.MessageMapper;
+import es.uma.health.kids.application.dto.patient.PatientMapper;
 import es.uma.health.kids.domain.model.message.Message;
 import es.uma.health.kids.domain.model.message.MessageBody;
 import es.uma.health.kids.domain.model.message.MessageId;
@@ -32,7 +33,8 @@ public class UserViewMessagesTest {
 	private MessageRepository messageRepo;
 	private PatientRepository patientRepo;
 	Collection<ConversationDTO> expectedConversations;
-	private MessageMapper mapper;
+	private MessageMapper messageMapper;
+	private PatientMapper patientMapper;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -47,15 +49,18 @@ public class UserViewMessagesTest {
 		Message message = new Message(new MessageId(1), new MessageBody("Body"), LocalDateTime.now(), false, patient.doctorId(), patient.id());
 		messageRepo = MessageRepositoryStub.with(message);
 		
-		mapper = new MessageMapper();
+		messageMapper = new MessageMapper();
+		patientMapper = new PatientMapper();
 		
-		expectedConversations = asList(new ConversationDTO(patient, asList(mapper.toDTO(message))));
+		expectedConversations = asList(new ConversationDTO(patientMapper.toDTO(patient), 
+				asList(messageMapper.toDTO(message))));
 	}
 
 	@Test
 	public void shouldAResponsibleViewAllConversations() {
 		
-		Collection<ConversationDTO> actualConversations = new UserViewMessages(userRepo, patientRepo, messageRepo, mapper).execute(
+		Collection<ConversationDTO> actualConversations = new UserViewMessages(userRepo, patientRepo, messageRepo, 
+				messageMapper, patientMapper).execute(
 					new UserViewMessagesRequest(1)
 				);
 		
