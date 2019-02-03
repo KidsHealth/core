@@ -11,6 +11,10 @@ public class DiseaseShortName {
         this.shortNameString = shortNameString;
     }
 
+    public String value() {
+    	return shortNameString;
+    }
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) {

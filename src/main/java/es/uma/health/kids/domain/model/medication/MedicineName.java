@@ -9,6 +9,10 @@ public class MedicineName {
     public MedicineName(String nameString) {
         this.nameString = nameString;
     }
+    
+    public String value() {
+    	return nameString;
+    }
 
     @Override
     public boolean equals(Object o) {

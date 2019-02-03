@@ -9,6 +9,10 @@ public class Timing {
     public Timing(int eachHours) {
         this.eachHours = eachHours;
     }
+    
+    public int value() {
+    	return eachHours;
+    }
 
     @Override
     public boolean equals(Object o) {

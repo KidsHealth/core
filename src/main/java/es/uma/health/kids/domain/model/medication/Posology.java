@@ -10,6 +10,10 @@ public class Posology {
         this.miligrams = miligrams;
     }
 
+    public int value() {
+    	return miligrams;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -26,4 +30,5 @@ public class Posology {
     public int hashCode() {
         return Objects.hash(miligrams);
     }
+
 }
