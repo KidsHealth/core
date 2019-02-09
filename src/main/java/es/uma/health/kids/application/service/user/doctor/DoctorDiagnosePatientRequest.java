@@ -14,5 +14,8 @@ public class DoctorDiagnosePatientRequest {
 		this.diseaseName = diseaseName;
 		this.diseaseShortName = diseaseShortName;
 	}
+
+	public DoctorDiagnosePatientRequest() {
+	}
 	
 }

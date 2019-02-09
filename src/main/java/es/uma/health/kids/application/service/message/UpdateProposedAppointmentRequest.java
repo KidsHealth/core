@@ -11,5 +11,8 @@ public class UpdateProposedAppointmentRequest {
 		this.messageId = messageId;
 		this.accepting = accepting;
 	}
+
+	public UpdateProposedAppointmentRequest() {
+	}
 	
 }

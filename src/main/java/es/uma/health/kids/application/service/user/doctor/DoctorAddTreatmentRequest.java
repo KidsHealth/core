@@ -22,5 +22,8 @@ public class DoctorAddTreatmentRequest {
 		this.startedAt = startedAt;
 		this.endedAt = endedAt;
 	}
+
+	public DoctorAddTreatmentRequest() {
+	}
 	
 }

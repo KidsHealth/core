@@ -9,5 +9,8 @@ public class ViewDetailedPatientRequest {
 		this.userId = userId;
 		this.patientId = patientId;
 	}
+
+	public ViewDetailedPatientRequest() {
+	}
 	
 }
