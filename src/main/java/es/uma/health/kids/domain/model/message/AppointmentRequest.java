@@ -26,6 +26,11 @@ public class AppointmentRequest extends Message {
 		this.updatedAt = updatedAt;
 		this.status = status;
 	}
+	
+	@Override
+	public boolean isAppointmentRequest() {
+		return true;
+	}
 
     public LocalDateTime updatedAt() {
         return updatedAt;
