@@ -65,7 +65,7 @@ public class Doctor extends User {
 			throw new NotAuthorizedException("The doctor does not have authorization to perform this action.");
 		}
 		return new Medication(anId, aDiseaseContraction.id(), medicineName, medicineCommercialName, 
-				timing, posology, startedAt);
+				timing, posology, startedAt, endedAt);
 	}
 
 	
