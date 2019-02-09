@@ -45,5 +45,6 @@ public class UpdateProposedAppointment {
 			apRequest.reject();
 		}
 		
+		messageRepo.update(apRequest);
 	}
 }

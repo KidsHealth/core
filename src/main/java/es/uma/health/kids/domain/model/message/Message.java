@@ -29,6 +29,10 @@ public class Message {
 		this.doctorId = doctorId;
 		this.patientId = patientId;
 	}
+	
+	public boolean isAppointmentRequest() {
+		return false;
+	}
 
 	public MessageId id() {
         return id;
