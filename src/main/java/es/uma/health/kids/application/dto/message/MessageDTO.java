@@ -8,6 +8,7 @@ public class MessageDTO {
 	public boolean isDoctorTheSender;
 	public int doctorId;
 	public int patientId;
+	public AppointmentRequestDetails apDet = null;
 	
 	public MessageDTO(int id, String body, String sendedAt, boolean isDoctorTheSender, int doctorId, int patientId) {
 		this.id = id;
