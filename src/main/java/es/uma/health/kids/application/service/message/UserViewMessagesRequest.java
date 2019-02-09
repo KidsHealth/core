@@ -7,5 +7,8 @@ public class UserViewMessagesRequest {
 	public UserViewMessagesRequest(int requesterId) {
 		this.requesterId = requesterId;
 	}
+
+	public UserViewMessagesRequest() {
+	}
 	
 }

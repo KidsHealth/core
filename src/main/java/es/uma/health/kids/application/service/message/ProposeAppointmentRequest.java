@@ -13,5 +13,8 @@ public class ProposeAppointmentRequest {
 		this.body = body;
 		this.proposedDatetime = proposedDatetime;
 	}
+
+	public ProposeAppointmentRequest() {
+	}
 	
 }

@@ -14,4 +14,7 @@ public class ResponsibleAddPatientRequest {
 		this.birthdate = birthdate;
 	}
 
+	public ResponsibleAddPatientRequest() {
+	}
+	
 }

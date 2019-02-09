@@ -11,5 +11,8 @@ public class SendMessageRequest {
 		this.patientId = patientId;
 		this.body = body;
 	}
+
+	public SendMessageRequest() {
+	}
 	
 }

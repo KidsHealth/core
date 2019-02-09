@@ -20,5 +20,8 @@ public class ResponsibleUpdatePatientRequest {
 		this.weight = weight;
 		this.height = height;
 	}
+
+	public ResponsibleUpdatePatientRequest() {
+	}
 	
 }

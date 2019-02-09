@@ -7,5 +7,8 @@ public class UserViewTheirPatientsRequest {
 	public UserViewTheirPatientsRequest(int userId) {
 		this.userId = userId;
 	}
+
+	public UserViewTheirPatientsRequest() {
+	}
 	
 }

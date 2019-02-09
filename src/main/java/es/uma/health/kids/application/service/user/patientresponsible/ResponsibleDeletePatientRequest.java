@@ -9,5 +9,8 @@ public class ResponsibleDeletePatientRequest {
 		this.userId = userId;
 		this.patientId = patientId;
 	}
+
+	public ResponsibleDeletePatientRequest() {
+	}
 	
 }

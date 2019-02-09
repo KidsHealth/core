@@ -9,5 +9,8 @@ public class DoctorUnassignAPatientRequest {
 		this.doctorId = doctorId;
 		this.patientId = patientId;
 	}
+
+	public DoctorUnassignAPatientRequest() {
+	}
 	
 }
