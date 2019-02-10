@@ -61,7 +61,8 @@ public class AppointmentRequest extends Message {
     public void accept() {
         this.status = Status.ACCEPTED;
         this.updatedAt = LocalDateTime.now();
-        DomainEventPublisher.instance().publish(new AppointmentAccepted(this.id(), this.datetimeProposed));
+        DomainEventPublisher.instance().publish(
+        		new AppointmentAccepted(this.id(), this.datetimeProposed(), this.patientId()));
     }
 
     public boolean isRejected() {
