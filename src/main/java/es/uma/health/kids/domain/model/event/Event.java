@@ -16,26 +16,19 @@ public class Event {
     private LocalDateTime endDatetime;
     private PatientId patientId;
 
-    public Event(EventId id, EventTitle title,
-            EventDescription description, EventTopic topic, EventVenue venue, LocalDateTime startDatetime,
-            LocalDateTime endDatetime) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.topic(topic);
-        this.venue = venue;
-        this.startDatetime = startDatetime;
-        this.endDatetime = endDatetime;
-    }
+    public Event(EventId id, EventTitle title, EventDescription description, EventVenue venue, EventTopic topic,
+			LocalDateTime startDatetime, LocalDateTime endDatetime, PatientId patientId) {
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.venue = venue;
+		this.topic = topic;
+		this.startDatetime = startDatetime;
+		this.endDatetime = endDatetime;
+		this.patientId = patientId;
+	}
 
-    public Event(EventId id, EventTitle title, LocalDateTime startDatetime, LocalDateTime endDatetime) {
-        this.id = id;
-        this.title = title;
-        this.startDatetime = startDatetime;
-        this.endDatetime = endDatetime;
-    }
-
-    public EventId id() {
+	public EventId id() {
         return id;
     }
 
