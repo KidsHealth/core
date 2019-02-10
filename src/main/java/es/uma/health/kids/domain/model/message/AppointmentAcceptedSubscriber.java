@@ -18,13 +18,10 @@ public class AppointmentAcceptedSubscriber implements DomainEventSubscriber<Appo
 
 	@Override
 	public void handleEvent(AppointmentAccepted aDomainEvent) {
-		eventRepo.add(new Event(
-				eventRepo.nextIdentity(), 
-				new EventTitle("Cita médica"), 
+		eventRepo.add(new Event(eventRepo.nextIdentity(), new EventTitle("Cita médica"),
 				new EventDescription(Integer.toString(aDomainEvent.appointmentId().value())), 
-				new EventTopic("Appointments"), new EventVenue(""),
-				aDomainEvent.datetimeProposed(), 
-				aDomainEvent.datetimeProposed().plusMinutes(15)));
+				new EventVenue(""), new EventTopic("Appointments"), aDomainEvent.datetimeProposed(),
+				aDomainEvent.datetimeProposed().plusMinutes(15), aDomainEvent.patientId()));
 	}
 
 	@Override

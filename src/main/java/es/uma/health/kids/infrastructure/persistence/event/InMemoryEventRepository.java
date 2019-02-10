@@ -50,10 +50,11 @@ public class InMemoryEventRepository implements EventRepository {
 				event.id(), 
 				event.title(), 
 				event.description(), 
-				event.topic(), 
 				event.venue(), 
+				event.topic(), 
 				event.startDatetime(), 
-				event.endDatetime());
+				event.endDatetime(),
+				event.patientId());
 	}
 	
 	public Event ofAppointment(MessageId appointmentId) {
